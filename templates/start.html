@@ -1,0 +1,21 @@
+<!doctype html>
+<html manifest="" lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>리드수 보여주기</title>
+</head>
+
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <h3>
+    Run단위로 reads수를 보여줍니다~
+    </h3>
+    <form action="{{ url_for('call_454_miseq') }}" method=post>
+        <div class="form-group">
+            <p>런아이디를 치세요~</p>
+            <input type="number" name="run_id" class="form-control" style="max-width: 100px;">
+        </div>
+        <button type="submit" class="btn-primary" name="run_id">Submit</button>
+    </form>
+{% endblock %}

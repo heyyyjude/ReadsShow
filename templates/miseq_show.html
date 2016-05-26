@@ -1,0 +1,70 @@
+<!doctype html>
+<html manifest="" lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>리드수 보여주기</title>
+</head>
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <h3>지금 마이싴 런 리드를 보고 계십니다~</h3>
+    <p></p>
+    <del>이 페이지가 이상한 메세지를 보여주면, 그건 바로 북한의 소행입니다....북한에서 해...해킹을</del>
+    <p></p>
+    <a class="btn btn-info" href="{{ url_for('get_run_id') }}" role="button">런아이디 검색 ㄱㄱ</a>
+    <br/>
+    <div class="container">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>SampleName</th>
+                <th>Order</th>
+                <th>InitialRawReads</th>
+                <th>MergedReads</th>
+                <th>PrimerTrimmed</th>
+                <th>InitialReads</th>
+                <th>LowQualityReads</th>
+                <th>ShortReads</th>
+                <th>DroppedReads</th>
+                <th>Non16sReads</th>
+                <th>ChimeraReads</th>
+                <th>FinalReads</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in sample_infos %}
+                <tr>
+                    <td>{{ post.SampleName }}</td>
+                    <td>{{ post.Order }}</td>
+                    <td>{{ post.InitialRawReads }}</td>
+                    <td>{{ post.MergedReads }}</td>
+                    <td>{{ post.PrimerTrimmed }}</td>
+                    <td>{{ post.InitialReads }}</td>
+                    <td>{{ post.LowQualityReads }}</td>
+                    <td>{{ post.ShortReads }}</td>
+                    <td>{{ post.DroppedReads }}</td>
+                    <td>{{ post.Non16sReads }}</td>
+                    <td>{{ post.ChimeraReads }}</td>
+                    <td>{{ post.FinalReads }}</td>
+                </tr>
+            {% endfor %}
+            {% for post in sum_infos %}
+                <tr>
+                    <th>Total</th>
+                    <th></th>
+                    <th>{{ post.InitialRawReads }}</th>
+                    <th>{{ post.MergedReads }}</th>
+                    <th>{{ post.PrimerTrimmed }}</th>
+                    <th>{{ post.InitialReads }}</th>
+                    <th>{{ post.LowQualityReads }}</th>
+                    <th>{{ post.ShortReads }}</th>
+                    <th>{{ post.DroppedReads }}</th>
+                    <th>{{ post.Non16sReads }}</th>
+                    <th>{{ post.ChimeraReads }}</th>
+                    <th>{{ post.FinalReads }}</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
